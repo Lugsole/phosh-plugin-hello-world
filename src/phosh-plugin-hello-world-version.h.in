@@ -1,0 +1,96 @@
+/* phosh-plugin-hello-world-version.h.in
+ *
+ * Copyright 2023 Lugsole
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+#pragma once
+
+#if !defined(PHOSH_PLUGIN_HELLO_WORLD_INSIDE) && !defined(PHOSH_PLUGIN_HELLO_WORLD_COMPILATION)
+# error "Only <phosh-plugin-hello-world.h> can be included directly."
+#endif
+
+/**
+ * SECTION:phosh-plugin-hello-worldversion
+ * @short_description: phosh-plugin-hello-world version checking
+ *
+ * phosh-plugin-hello-world provides macros to check the version of the library
+ * at compile-time
+ */
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION:
+ *
+ * phosh-plugin-hello-world major version component (e.g. 1 if %PHOSH_PLUGIN_HELLO_WORLD_VERSION is 1.2.3)
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION (@MAJOR_VERSION@)
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_MINOR_VERSION:
+ *
+ * phosh-plugin-hello-world minor version component (e.g. 2 if %PHOSH_PLUGIN_HELLO_WORLD_VERSION is 1.2.3)
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_MINOR_VERSION (@MINOR_VERSION@)
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_MICRO_VERSION:
+ *
+ * phosh-plugin-hello-world micro version component (e.g. 3 if %PHOSH_PLUGIN_HELLO_WORLD_VERSION is 1.2.3)
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_MICRO_VERSION (@MICRO_VERSION@)
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_VERSION
+ *
+ * phosh-plugin-hello-world version.
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_VERSION (@VERSION@)
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_VERSION_S:
+ *
+ * phosh-plugin-hello-world version, encoded as a string, useful for printing and
+ * concatenation.
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_VERSION_S "@VERSION@"
+
+#define PHOSH_PLUGIN_HELLO_WORLD_ENCODE_VERSION(major,minor,micro) \
+        ((major) << 24 | (minor) << 16 | (micro) << 8)
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_VERSION_HEX:
+ *
+ * phosh-plugin-hello-world version, encoded as an hexadecimal number, useful for
+ * integer comparisons.
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_VERSION_HEX \
+        (PHOSH_PLUGIN_HELLO_WORLD_ENCODE_VERSION (PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION, PHOSH_PLUGIN_HELLO_WORLD_MINOR_VERSION, PHOSH_PLUGIN_HELLO_WORLD_MICRO_VERSION))
+
+/**
+ * PHOSH_PLUGIN_HELLO_WORLD_CHECK_VERSION:
+ * @major: required major version
+ * @minor: required minor version
+ * @micro: required micro version
+ *
+ * Compile-time version checking. Evaluates to %TRUE if the version
+ * of phosh-plugin-hello-world is greater than the required one.
+ */
+#define PHOSH_PLUGIN_HELLO_WORLD_CHECK_VERSION(major,minor,micro)   \
+        (PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION > (major) || \
+         (PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION == (major) && PHOSH_PLUGIN_HELLO_WORLD_MINOR_VERSION > (minor)) || \
+         (PHOSH_PLUGIN_HELLO_WORLD_MAJOR_VERSION == (major) && PHOSH_PLUGIN_HELLO_WORLD_MINOR_VERSION == (minor) && \
+          PHOSH_PLUGIN_HELLO_WORLD_MICRO_VERSION >= (micro)))

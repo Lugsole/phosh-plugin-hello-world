@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <template class="HelloWorld" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="margin">12</property>
+    <child>
+      <object class="GtkLabel" id="label">
+        <property name="label">Hello, World!</property>
+        <property name="vexpand">true</property>
+        <property name="visible">True</property>
+        <style>
+          <class name="title-1"/>
+        </style>
+      </object>
+    </child>
+  </template>
+</interface>

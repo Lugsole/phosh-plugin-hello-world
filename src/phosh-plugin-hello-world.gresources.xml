@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/example/phosh/plugins/hello-world/">
+    <file preprocess="xml-stripblanks">hello-world.ui</file>
+    <file compressed="true">stylesheet/common.css</file>
+  </gresource>
+</gresources>

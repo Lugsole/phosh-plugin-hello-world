@@ -1,0 +1,6 @@
+[Plugin]
+# Translators: This is an internal id, no need to translate it
+Id=@name@
+Name=Hello World
+Comment=A simple Hello World widget
+Plugin=@plugins_dir@/libphosh-plugin-@name@.so
